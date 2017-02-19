@@ -1,0 +1,6 @@
+﻿  statistics.cpp
+c:\users\sean\documents\visual studio 2015\projects\crypto\crypto\statistics.cpp(66): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
+  Crypto.vcxproj -> C:\Users\Sean\Documents\Visual Studio 2015\Projects\Crypto\Debug\Crypto.exe
+  Crypto.vcxproj -> C:\Users\Sean\Documents\Visual Studio 2015\Projects\Crypto\Debug\Crypto.pdb (Partial PDB)

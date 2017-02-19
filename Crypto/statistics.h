@@ -1,0 +1,42 @@
+#include <vector>
+#include <fstream>
+#include <iostream>
+
+class diagram
+{
+public:
+	diagram();
+	char one;
+	char two;
+	~diagram();
+};
+
+class statistics
+{
+private:
+	int total;
+	double IC;
+	std::vector<float> sampleData;
+	std::vector<char> letters;
+	std::vector<int> lettersAmount;
+	std::vector<float> lettersPercent;
+	std::vector<diagram> diagrams;
+	std::vector<int> diagramAmount;
+	std::vector<float> diagramPercent;
+
+public:
+	statistics();
+	bool readSample(char* fileName);
+	void initVars(std::vector<char>* in);
+	std::vector<float>* getStats();
+	std::vector<float>* getSample();
+	std::vector<float>* getDiagrams();
+	float getIC();
+	void calcIC(std::vector<int>* in);
+	bool stats(std::vector<char>* in);
+	~statistics();
+};
+
+
+
+
