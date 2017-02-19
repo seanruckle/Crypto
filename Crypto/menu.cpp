@@ -25,20 +25,35 @@ int menu::options2()
 int menu::crack(int input, std::vector<char>* in)
 {
 	int shift;
-	int i;
+	int i = 0;
+	char tmp = '9';
 	std::string vigenere;
+	std::string sub = "33";
 	statistics stats;
 	decrypt decrypt;
 	switch(input) {
-	case 1:
+	case 1:	//shift
 		std::cout << "Shift: ";
 		std::cin >> shift;
 		std::cout << std::endl;
 		decrypt.decryptShift(shift, in);
 		break;
-	case 2:
+	case 2:	//substitution
+		vigenere = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		std::cout << "Manualy decrypt the cipher" << std::endl << "Enter 9 to exit" << "Enter the substitution you want to add like this AB, where an A in the cipher text is now a B in the plain text" << std::endl;
+		while (sub.at(0) != tmp) {
+			std::cin >> sub;
+			if (sub.at(0) == '9') { 
+				break; 
+			}
+			for (i = 0; i < sub.size(); i++) {
+				sub.at(i) = toupper(sub.at(i));
+			}
+			vigenere.at(sub.at(0) - 'A') = sub.at(1);
+			decrypt.decryptSub(vigenere, in);
+		}
 		break;
-	case 3:
+	case 3: //vigenere
 		std::cout << "String Key: ";
 		std::cin >> vigenere;
 		std::cout << std::endl;
@@ -47,9 +62,9 @@ int menu::crack(int input, std::vector<char>* in)
 		}
 		decrypt.decryptVigenere(vigenere, in);
 		break;
-	case 4:
+	case 4: // permutation
 		break;
-	case 5:
+	case 5: //ont time pad
 		break;
 	}
 	return 0;

@@ -30,6 +30,26 @@ int decrypt::decryptVigenere(std::string key, std::vector<char>* in)
 	return 0;
 }
 
+int decrypt::decryptSub(std::string key, std::vector<char>* in)
+{
+	int i = 0;
+	std::cout << "Cipher text:     ";
+	for (i = 0; i < 50; i++) {
+		std::cout << in->at(i);
+	}
+	std::cout << std::endl;
+	std::cout << "Decrypt attempt: ";
+	for (i = 0; i < 50; i++) {
+		std::cout << key.at(in->at(i) - 'A');
+	}
+	std::cout << std::endl;
+	/*for (i = 0; i < 50; i++) {
+		std::cout << in->at(i);
+	}*/
+
+	return 0;
+}
+
 
 decrypt::~decrypt()
 {
