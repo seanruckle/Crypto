@@ -50,6 +50,57 @@ int decrypt::decryptSub(std::string key, std::vector<char>* in)
 	return 0;
 }
 
+int decrypt::decryptPerm(int key, std::vector<char>* in)
+{
+	int i = 0;
+	int j = 0;
+	int k;
+	int rows = ceil((float)in->size() / (float)key);
+	std::vector<std::vector<char>> matrix;
+	std::vector<char> tmp;
+	std::vector<char> plain;
+	for (i = 0; i < key; i++) {
+		matrix.push_back(tmp);
+	}
+	for (i = 0; i < rows; i++) {
+		for (j = 0; j < key; j++) {
+			matrix.at(j).push_back(' ');
+		}
+	}
+	k = in->size() % key;
+	if (k == 0) {
+		for (i = 0; i < key; i++) {
+			for (j = 0; j < rows; j++) {
+				matrix.at(i).at(j) = in->at((i * rows) + j);
+			}
+		}
+	}
+	else {
+		for (i = 0; i < k; i++) {
+			for (j = 0; j < rows; j++) {
+				matrix.at(i).at(j) = in->at((i * rows) + j);
+			}
+		}
+		j = j;
+		while (i < key) {
+			for (j = 0; j < rows - 1; j++) {
+				matrix.at(i).at(j) = in->at((i * rows) + j);
+			}
+			i++;
+		}
+	}
+	for (i = 0; i < rows; i++) {
+		for (j = 0; j < key; j++) {
+			plain.push_back(matrix.at(j).at(i));
+		}
+	}
+	for (i = 0; i < in->size(); i++) {
+		in->at(i) = plain.at(i);
+	}
+	i = 2;
+	return 0;
+}
+
 
 decrypt::~decrypt()
 {

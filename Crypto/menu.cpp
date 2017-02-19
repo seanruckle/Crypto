@@ -25,6 +25,7 @@ int menu::options2()
 int menu::crack(int input, std::vector<char>* in, statistics stats)
 {
 	int shift;
+	int columns;
 	int i = 0;
 	char tmp = '9';
 	std::string vigenere;
@@ -63,6 +64,10 @@ int menu::crack(int input, std::vector<char>* in, statistics stats)
 		decrypt.decryptVigenere(vigenere, in);
 		break;
 	case 4: // permutation
+		std::cout << "Number of Columns: ";
+		std::cin >> columns;
+		std::cout << std::endl;
+		decrypt.decryptPerm(columns, in);
 		break;
 	case 5: //ont time pad
 		break;

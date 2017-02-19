@@ -35,6 +35,7 @@ void file::printText()
 	for (i = 0; i < input.size(); i++) {
 		std::cout << input.at(i);
 	}
+	std::cout << std::endl;
 	return;
 }
 
@@ -43,7 +44,7 @@ void file::print(std::vector<float>* in, std::vector<float>* sample, std::vector
 	int i = 0;
 	int j = 0;
 	char let = 'A';
-	std::cout << IC << std::endl;
+	std::cout << "IC: " << IC << std::endl;
 	/*for (i = 0; i < 26; i++) {
 		let = 'A' + i;
 		std::cout << let << "\t" << in->at(i) << "\t" << sample->at(i) << std::endl;	
