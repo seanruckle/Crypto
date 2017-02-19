@@ -35,6 +35,7 @@ public:
 	float getIC();
 	void calcIC(std::vector<int>* in);
 	bool stats(std::vector<char>* in);
+	void printStats();
 	~statistics();
 };
 

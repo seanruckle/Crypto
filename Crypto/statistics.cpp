@@ -108,6 +108,68 @@ bool statistics::stats(std::vector<char>* in)
 	return false;
 }
 
+void statistics::printStats()
+{
+	int index1 = 0;
+	int index2 = 1;
+	int index3 = 2;
+	int index4 = 3;
+	int index5 = 4;
+	int i = 0;
+	float tmp;
+	for (i = 0; i < lettersPercent.size(); i++) {
+		tmp = lettersPercent.at(i);
+		if (tmp > lettersPercent.at(index1)) {
+			index1 = i;
+		}
+		else if (tmp > lettersPercent.at(index2)) {
+			index2 = i;
+		}
+		else if (tmp > lettersPercent.at(index3)) {
+			index3 = i;
+		}
+		else if (tmp > lettersPercent.at(index4)) {
+			index4 = i;
+		}
+		else if (tmp > lettersPercent.at(index5)) {
+			index5 = i;
+		}
+	}
+		std::cout << "Cipher text percents:" << std::endl << letters.at(index1) << "\t" << lettersPercent.at(index1) << std::endl <<
+			letters.at(index2) << "\t" << lettersPercent.at(index2) << std::endl <<
+			letters.at(index3) << "\t" << lettersPercent.at(index3) << std::endl <<
+			letters.at(index4) << "\t" << lettersPercent.at(index4) << std::endl <<
+			letters.at(index5) << "\t" << lettersPercent.at(index5) << std::endl;
+		index1 = 0;
+		index2 = 1;
+		index3 = 2;
+		index4 = 3;
+		index5 = 4;
+		for (i = 0; i < sampleData.size(); i++) {
+			tmp = sampleData.at(i);
+			if (tmp > sampleData.at(index1)) {
+				index1 = i;
+			}
+			else if (tmp > sampleData.at(index2)) {
+				index2 = i;
+			}
+			else if (tmp > sampleData.at(index3)) {
+				index3 = i;
+			}
+			else if (tmp > sampleData.at(index4)) {
+				index4 = i;
+			}
+			else if (tmp > sampleData.at(index5)) {
+				index5 = i;
+			}
+		}
+			std::cout << "English language percents:" << std::endl << letters.at(index1) << "\t" << sampleData.at(index1) << std::endl <<
+				letters.at(index2) << "\t" << lettersPercent.at(index2) << std::endl <<
+				letters.at(index3) << "\t" << lettersPercent.at(index3) << std::endl <<
+				letters.at(index4) << "\t" << lettersPercent.at(index4) << std::endl <<
+				letters.at(index5) << "\t" << lettersPercent.at(index5) << std::endl;
+}
+
 statistics::~statistics()
 {
 }

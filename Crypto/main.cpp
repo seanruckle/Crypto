@@ -19,7 +19,7 @@ int main(void) {
 	if (input == 2) {
 		input= menu.options2();
 		std::cout << "Enter key" << std::endl;
-		menu.crack(input, file.getInput());
+		menu.crack(input, file.getInput(), stats);
 		file.printText();
 	}
 	file.print(stats.getStats(), stats.getSample(), stats.getDiagrams(), stats.getIC());

@@ -11,7 +11,7 @@ public:
 	menu();
 	int options();
 	int options2();
-	int crack(int input, std::vector<char>* in);
+	int crack(int input, std::vector<char>* in, statistics stats);
 	void guess(int type);
 	~menu();
 };
