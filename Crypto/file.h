@@ -12,6 +12,7 @@ public:
 	file();
 	bool readFile(char* fileName);
 	std::vector<char>* getInput();
+	void printText();
 	void print(std::vector<float>* in, std::vector<float>* sample, std::vector<float>* diagrams, float IC);
 	~file();
 };

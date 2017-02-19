@@ -110,12 +110,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="decrypt.cpp" />
     <ClCompile Include="file.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="statistics.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="decrypt.h" />
+    <ClInclude Include="defines.h" />
     <ClInclude Include="file.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="statistics.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

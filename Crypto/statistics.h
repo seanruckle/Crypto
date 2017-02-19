@@ -28,6 +28,7 @@ public:
 	statistics();
 	bool readSample(char* fileName);
 	void initVars(std::vector<char>* in);
+	std::vector<char>* getLetters();
 	std::vector<float>* getStats();
 	std::vector<float>* getSample();
 	std::vector<float>* getDiagrams();

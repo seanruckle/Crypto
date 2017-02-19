@@ -29,6 +29,15 @@ std::vector<char>* file::getInput()
 	return &input;
 }
 
+void file::printText()
+{
+	int i = 0;
+	for (i = 0; i < input.size(); i++) {
+		std::cout << input.at(i);
+	}
+	return;
+}
+
 void file::print(std::vector<float>* in, std::vector<float>* sample, std::vector<float>* diagrams, float IC)
 {
 	int i = 0;

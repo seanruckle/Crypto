@@ -47,6 +47,11 @@ void statistics::initVars(std::vector<char>* in)
 	}
 }
 
+std::vector<char>* statistics::getLetters()
+{
+	return &letters;
+}
+
 std::vector<float>* statistics::getStats()
 {
 	return &lettersPercent;
