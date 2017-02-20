@@ -1,6 +1,7 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <queue>
 
 class diagram
 {
@@ -26,6 +27,10 @@ private:
 
 public:
 	statistics();
+	float getLetPer(int i);
+	float getSamPer(int i);
+	char getLet(int i);
+	char getCip(int i);
 	bool readSample(char* fileName);
 	void initVars(std::vector<char>* in);
 	std::vector<char>* getLetters();

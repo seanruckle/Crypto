@@ -7,6 +7,26 @@ statistics::statistics()
 {
 }
 
+float statistics::getLetPer(int i)
+{
+	return lettersPercent.at(i);
+}
+
+float statistics::getSamPer(int i)
+{
+	return sampleData.at(i);
+}
+
+char statistics::getLet(int i)
+{
+	return letters.at(i);
+}
+
+char statistics::getCip(int i)
+{
+	return 0;
+}
+
 bool statistics::readSample(char * fileName)
 {
 	std::ifstream inS;
@@ -110,64 +130,40 @@ bool statistics::stats(std::vector<char>* in)
 
 void statistics::printStats()
 {
-	int index1 = 0;
-	int index2 = 1;
-	int index3 = 2;
-	int index4 = 3;
-	int index5 = 4;
+	//float tmp;
 	int i = 0;
-	float tmp;
-	for (i = 0; i < lettersPercent.size(); i++) {
-		tmp = lettersPercent.at(i);
-		if (tmp > lettersPercent.at(index1)) {
-			index1 = i;
-		}
-		else if (tmp > lettersPercent.at(index2)) {
-			index2 = i;
-		}
-		else if (tmp > lettersPercent.at(index3)) {
-			index3 = i;
-		}
-		else if (tmp > lettersPercent.at(index4)) {
-			index4 = i;
-		}
-		else if (tmp > lettersPercent.at(index5)) {
-			index5 = i;
-		}
+	int k = 5;
+	int array1[5];
+	int array2[5];
+
+	std::priority_queue<std::pair<double, int>> q;
+	std::priority_queue<std::pair<double, int>> w;
+	for (int i = 0; i < lettersPercent.size(); ++i) {
+		q.push(std::pair<double, int>(lettersPercent[i], i));
 	}
-		std::cout << "Cipher text percents:" << std::endl << letters.at(index1) << "\t" << lettersPercent.at(index1) << std::endl <<
-			letters.at(index2) << "\t" << lettersPercent.at(index2) << std::endl <<
-			letters.at(index3) << "\t" << lettersPercent.at(index3) << std::endl <<
-			letters.at(index4) << "\t" << lettersPercent.at(index4) << std::endl <<
-			letters.at(index5) << "\t" << lettersPercent.at(index5) << std::endl;
-		index1 = 0;
-		index2 = 1;
-		index3 = 2;
-		index4 = 3;
-		index5 = 4;
-		for (i = 0; i < sampleData.size(); i++) {
-			tmp = sampleData.at(i);
-			if (tmp > sampleData.at(index1)) {
-				index1 = i;
-			}
-			else if (tmp > sampleData.at(index2)) {
-				index2 = i;
-			}
-			else if (tmp > sampleData.at(index3)) {
-				index3 = i;
-			}
-			else if (tmp > sampleData.at(index4)) {
-				index4 = i;
-			}
-			else if (tmp > sampleData.at(index5)) {
-				index5 = i;
-			}
-		}
-			std::cout << "English language percents:" << std::endl << letters.at(index1) << "\t" << sampleData.at(index1) << std::endl <<
-				letters.at(index2) << "\t" << lettersPercent.at(index2) << std::endl <<
-				letters.at(index3) << "\t" << lettersPercent.at(index3) << std::endl <<
-				letters.at(index4) << "\t" << lettersPercent.at(index4) << std::endl <<
-				letters.at(index5) << "\t" << lettersPercent.at(index5) << std::endl;
+	for (int i = 0; i < k; ++i) {
+		int ki = q.top().second;
+		array1[i] = ki;
+		q.pop();
+	}
+	for (int i = 0; i < sampleData.size(); ++i) {
+		w.push(std::pair<double, int>(sampleData[i], i));
+	}
+	for (int i = 0; i < k; ++i) {
+		int ki = w.top().second;
+		array2[i] = ki;
+		w.pop();
+	}
+
+	std::cout << "Cipher text percents:" << std::endl;
+	for (i = 0; i < 5; i++) {
+		std::cout << letters.at(array1[i]) << "\t" << lettersPercent.at(array1[i]) << std::endl;
+	}
+	std::cout << "English language percents:" << std::endl;
+	for (i = 0; i < 5; i++) {
+		std::cout << letters.at(array2[i]) << "\t" << sampleData.at(array2[i]) << std::endl;
+	}
+	std::cout << "IC: " << IC << std::endl;
 }
 
 statistics::~statistics()

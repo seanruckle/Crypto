@@ -22,6 +22,30 @@ int menu::options2()
 	return input;
 }
 
+int menu::options3()
+{
+	int input = -1;
+	std::cout << "What do you want to do" << std::endl << "1. Try to automatically crack as a vigenere cipher" << std::endl << "2. Try manually solving with a different method" << std::endl << "3. Exit Program" << std::endl;
+	std::cin >> input;
+	return input;
+}
+
+int menu::options4()
+{
+	int input = -1;
+	std::cout << "What do you want to do" << std::endl << "1. Try to automatically crack as a shift cipher" << std::endl << "2. Try manually solving with a different method" << std::endl << "3. Exit Program" << std::endl;
+	std::cin >> input;
+	return input;
+}
+
+int menu::options5()
+{
+	int input = -1;
+	std::cout << "What do you want to do" << std::endl << "1. Try manually solving with a different method" << std::endl << "2. Exit Program" << std::endl;
+	std::cin >> input;
+	return input;
+}
+
 int menu::crack(int input, std::vector<char>* in, statistics stats)
 {
 	int shift;
@@ -72,6 +96,11 @@ int menu::crack(int input, std::vector<char>* in, statistics stats)
 	case 5: //ont time pad
 		break;
 	}
+	return 0;
+}
+
+int menu::automatic(int input, std::vector<char>* in, statistics stats)
+{
 	return 0;
 }
 

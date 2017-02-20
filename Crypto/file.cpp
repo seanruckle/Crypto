@@ -32,7 +32,7 @@ std::vector<char>* file::getInput()
 void file::printText()
 {
 	int i = 0;
-	for (i = 0; i < input.size(); i++) {
+	for (i = 0; i < 100; i++) {
 		std::cout << input.at(i);
 	}
 	std::cout << std::endl;
