@@ -172,6 +172,75 @@ int decrypt::autoShift(statistics stats, std::vector<char>* in, int var)
 	return 0;
 }
 
+int decrypt::autoVig(statistics stats, std::vector<char>* in)
+{
+	int i;
+	int j;
+	int k = 0;
+	std::string key;
+	int tmp = 3000;
+	int index;
+	int length;
+	
+	char matrix[100] = { 0 };
+	length = stats.getKeyLength();
+	for (k = 0; k < stats.getKeyLength(); k++) {
+		float cs[26] = { 0 };
+		tmp = 3000;
+		for (i = 0; i < 100; i++) {
+			matrix[i] = in->at(i*length + k);
+		}
+		for (j = 0; j < 26; j++) {
+			int lettersAmount[26] = { 0 };
+			for (i = 0; i < 100; i++) {
+				lettersAmount[matrix[i] - 'A'] = lettersAmount[matrix[i] - 'A'] + 1;
+			}
+			for (i = 0; i < 26; i++) {
+				cs[j] = cs[j] + ((lettersAmount[i] - (100 * stats.getEnglish(i))) * (lettersAmount[i] - (100 * stats.getEnglish(i)))) / (100 * stats.getEnglish(i));
+			}
+			for (i = 0; i < 100; i++) {
+				matrix[i] = (((matrix[i] - 'A') + 1) % 26) + 'A';
+			}
+			i = 0;
+		}
+		for (i = 0; i < 26; i++) {
+			if (cs[i] < tmp) {
+				tmp = cs[i];
+				index = i;
+			}
+		}
+		key += (char)'A' + 26 - index;
+	}
+	decryptVigenere(key, in);
+	i = 0;
+	return 0;
+}
+
+
+float decrypt::calcIC(char matrix[100], int num)
+{
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	int a[26] = {0};
+	float avg = 0;;
+	double sum = 0;
+	for (j = 0; j < num; j++) {
+		for (i = 0; i < 100; i++) {
+			a[matrix[i] - 'A'] = a[matrix[i] - 'A'] + 1;
+		}
+		sum = 0;
+		for (k = 0; k < 26; k++) {
+			sum = sum + (double)(a[k] * ((double)a[k] - 1.0)) / ((double)100 * ((double)100 - 1.0));
+		}
+		
+		avg = avg + sum;
+	}
+	avg = avg / num;
+	
+	return avg;
+}
+
 
 decrypt::~decrypt()
 {

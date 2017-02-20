@@ -12,6 +12,8 @@ public:
 	int decryptPerm(int key, std::vector<char>* in);
 	int guessType(statistics stats, std::vector<char>* in);
 	int autoShift(statistics stats, std::vector<char>* in, int var);
+	int autoVig(statistics stats, std::vector<char>* in);
+	float calcIC(char matrix[100], int num);
 	~decrypt();
 };
 

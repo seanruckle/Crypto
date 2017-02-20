@@ -21,6 +21,7 @@ bool file::readFile(char * fileName)
 			input.push_back(temp);
 		}
 	}
+	inS.close();
 	return true;
 }
 
